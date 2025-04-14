@@ -1,6 +1,6 @@
 import { Card } from "../components/Card"
 import type { CollectionEntry } from "astro:content"
-import { getColorFromCategory } from "../utils/postsutils";
+import { getColorFromCategory } from "../utils/postsutils.ts";
 import { Tag } from "../components/Tag";
 import { CutCornerButton } from "../components/CutCornerButton";
 import { twMerge } from "tailwind-merge";
