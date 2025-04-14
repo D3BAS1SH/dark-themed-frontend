@@ -43,12 +43,12 @@ export const HeroSection = () => {
                     </div>
 
                     <img
-                    src="/public/assets/images/icosahedron.png"
+                    src="/assets/images/icosahedron.png"
                     alt=""
                     className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-[10%] brightness-[4%] hue-rotate-[240deg]"
                     />
                     <img
-                    src="/public/assets/images/icosahedron.png"
+                    src="/assets/images/icosahedron.png"
                     alt="Iconsahedron 3D image"
                     className="w-[500px]"
                     />
