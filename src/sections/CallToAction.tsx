@@ -15,12 +15,12 @@ export const CallToAction = () => {
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <Circle className="absolute left-0 -top-[400px]">
-                            <img src="/public/assets/images/cuboid.png" alt="Cuboid.png" className="size-[140px]"/>
+                            <img src="/assets/images/cuboid.png" alt="Cuboid.png" className="size-[140px]"/>
                         </Circle>
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <Circle className="absolute -left-[600px] -top-[70px]">
-                            <img src="/public/assets/images/cylinder.png" alt="Cylinder.png" className="size-[140px]"/>
+                            <img src="/assets/images/cylinder.png" alt="Cylinder.png" className="size-[140px]"/>
                         </Circle>
                     </div>
                     <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center">Ready to <span className="block">get started</span></h2>
