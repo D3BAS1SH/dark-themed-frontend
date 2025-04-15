@@ -1,8 +1,18 @@
+import { useRef } from "react";
 import { Circle } from "../components/Circle"
 import { CutCornerButton } from "../components/CutCornerButton"
 import { Hexagon } from "../components/Hexagon"
+import { motion,useScroll, useTransform } from "framer-motion";
 
 export const HeroSection = () => {
+    const icoshedronRef = useRef(null);
+
+    const {scrollYProgress} = useScroll({
+        target:icoshedronRef,
+        offset:['start end','end start']
+    })
+
+    const iconsaHedronRotate = useTransform(scrollYProgress,[0,1],[30,-45]);
     return (
     <section className="py-24 md:py-52 overflow-x-clip">
         <div className="container">
@@ -42,16 +52,18 @@ export const HeroSection = () => {
                         </Circle>
                     </div>
 
-                    <img
-                    src="/assets/images/icosahedron.png"
-                    alt=""
-                    className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-[10%] brightness-[4%] hue-rotate-[240deg]"
-                    />
-                    <img
-                    src="/assets/images/icosahedron.png"
-                    alt="Iconsahedron 3D image"
-                    className="w-[500px]"
-                    />
+                    <motion.div className="inline-flex" ref={icoshedronRef} style={{rotate:iconsaHedronRotate}}>
+                        <img
+                        src="/assets/images/icosahedron.png"
+                        alt=""
+                        className="absolute w-[calc(100%+100px)] max-w-none -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 saturate-[10%] brightness-[4%] hue-rotate-[240deg]"
+                        />
+                        <img
+                        src="/assets/images/icosahedron.png"
+                        alt="Iconsahedron 3D image"
+                        className="w-[500px]"
+                        />
+                    </motion.div>
                 </div>
             </div>
             <div className="flex justify-center flex-col items-center mt-40 md:mt-80 gap-4">
