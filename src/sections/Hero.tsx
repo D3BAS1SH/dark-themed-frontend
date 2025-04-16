@@ -57,13 +57,13 @@ export const HeroSection = () => {
 
                     <div 
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <Circle className="absolute left-[200px] -top-[900px]">
+                        <Circle className="absolute left-[200px] -top-[900px]" animate>
                             <motion.img style={{rotate:cubeRotate}} src="/assets/images/cube.png" alt="Cube 3D image." className="size-[140px]" ref={cubeRef}/>
                         </Circle>
                     </div>
                     <div 
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <Circle className="absolute left-[200px] top-[270px]">
+                        <Circle className="absolute left-[200px] top-[270px]" animate>
                             <motion.img style={{rotate:cuboidRotate}} src="/assets/images/cuboid.png" alt="Cuboid 3D image." className="size-[140px]" ref={cuboidRef}/>
                         </Circle>
                     </div>
