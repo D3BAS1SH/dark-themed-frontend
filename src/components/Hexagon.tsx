@@ -2,6 +2,8 @@ import { useLayoutEffect, useRef, useState, type ComponentPropsWithoutRef } from
 import { twMerge } from "tailwind-merge"
 import { motion } from "framer-motion";
 
+const isBrowser = typeof window !== 'undefined';
+
 export const Hexagon = (props:ComponentPropsWithoutRef<'svg'>&{size?:number;reverse?:boolean;duration?:number}) => {
 
     const { className, size=800, reverse=false, duration=30 } = props;
@@ -9,6 +11,7 @@ export const Hexagon = (props:ComponentPropsWithoutRef<'svg'>&{size?:number;reve
     const [totalPathLength, setTotalPathLength ] = useState<number>()
 
     useLayoutEffect(()=>{
+        if (!isBrowser) return;
         const pathLength = pathRef.current?.getTotalLength();
         if(!pathLength) return;
         const scaledPathLength = pathLength  * size / 82;

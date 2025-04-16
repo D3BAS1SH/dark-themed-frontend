@@ -1,5 +1,7 @@
+import { useRef } from "react"
 import { CutCornerButton } from "../components/CutCornerButton"
 import { TextButton } from "../components/TextButton"
+import { motion, useScroll, useTransform } from "framer-motion"
 
 const listItems = [
     'Experienced unparalleled security and scalability',
@@ -8,6 +10,45 @@ const listItems = [
 ]
 
 export const FeatureGrid = () => {
+
+    const torusKnotRef = useRef(null);
+    const firstHemiSphereRef = useRef(null);
+
+    const {scrollYProgress : torusKnotScrollYProgress} = useScroll({
+        target:torusKnotRef,
+        offset:['start end','end start']
+    })
+
+    const torusKnotTranslateY = useTransform(torusKnotScrollYProgress,[0,1],[100,-100])
+    const torusKnotRotate = useTransform(torusKnotScrollYProgress,[0,1],[30,-30])
+
+    const {scrollYProgress : firstHemiSphereScrollYProgress} = useScroll({
+        target:firstHemiSphereRef,
+        offset:['start end','end start']
+    })
+
+    const firstHemiSphereTranslateY = useTransform(firstHemiSphereScrollYProgress,[0,1],[50,-50])
+    const firstHemiSphereRotate = useTransform(firstHemiSphereScrollYProgress,[0,1],[-20,-50])
+
+    const coneRef = useRef(null);
+    const secondHemiSphereRef = useRef(null);
+
+    const {scrollYProgress : coneScrollYProgress} = useScroll({
+        target:coneRef,
+        offset:['start end','end start']
+    })
+
+    const coneTranslateY = useTransform(coneScrollYProgress,[0,1],[100,-100])
+    const coneRotate = useTransform(coneScrollYProgress,[0,1],[12,45])
+
+    const {scrollYProgress : secondHemiSphereScrollYProgress} = useScroll({
+        target:secondHemiSphereRef,
+        offset:['start end','end start']
+    })
+
+    const secondHemiSphereTranslateY = useTransform(secondHemiSphereScrollYProgress,[0,1],[50,-50])
+    const secondHemiSphereRotate = useTransform(secondHemiSphereScrollYProgress,[0,1],[-20,10])
+
     return <section className="py-24 overflow-x-clip">
         <div className="container">
             <div className="flex flex-col gap-56 md:gap-48 lg:gap-80">
@@ -34,16 +75,51 @@ export const FeatureGrid = () => {
                     </div>
                     <div className="hidden md:block">
                         <div className="relative inline-flex z-0">
-                            <img src="/assets/images/torus-knot.png" alt="Torus Knot" className="size-96 max-w-none"/>
-                            <img src="/assets/images/hemisphere.png" alt="Hemi Spehere" className="size-96 absolute top-3/4 -z-10 scale-x-[-1]"/>
+                            <motion.img 
+                            ref={torusKnotRef} 
+                            style={{
+                                translateY:torusKnotTranslateY,
+                                rotate:torusKnotRotate
+                            }}
+                            src="/assets/images/torus-knot.png" 
+                            alt="Torus Knot" 
+                            className="size-96 max-w-none"
+                            />
+                            <motion.img 
+                            ref={firstHemiSphereRef} 
+                            style={{
+                                translateY:firstHemiSphereTranslateY,
+                                rotate:firstHemiSphereRotate
+                            }}
+                            src="/assets/images/hemisphere.png" 
+                            alt="Hemi Spehere" 
+                            className="size-96 absolute top-3/4 -z-10 scale-x-[-1]"/>
                         </div>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="hidden md:block relative">
                         <div className="absolute right-0 z-0">
-                            <img src="/assets/images/cone.png" alt="Torus Knot" className="size-96 max-w-none rotate-12"/>
-                            <img src="/assets/images/hemisphere.png" alt="Hemi Spehere" className="size-96 absolute top-3/4 -z-10"/>
+                            <motion.img 
+                            ref={coneRef}
+                            style={{
+                                translateY:coneTranslateY,
+                                rotate:coneRotate
+                            }}
+                            src="/assets/images/cone.png" 
+                            alt="Torus Knot" 
+                            className="size-96 max-w-none rotate-12"
+                            />
+                            <motion.img 
+                            ref={secondHemiSphereRef}
+                            style={{
+                                translateY:secondHemiSphereTranslateY,
+                                rotate:secondHemiSphereRotate
+                            }}
+                            src="/assets/images/hemisphere.png" 
+                            alt="Hemi Spehere" 
+                            className="size-96 absolute top-3/4 -z-10"
+                            />
                         </div>
                     </div>
                     <div className="col-span-2">
